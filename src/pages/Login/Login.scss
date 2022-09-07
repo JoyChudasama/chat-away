@@ -37,15 +37,26 @@
                 justify-content: center;
                 gap: 1rem;
 
+                fieldset {
+                    border: none;
+                }
+
                 input {
                     padding: 1rem;
                     border: none;
                     border-radius: 0.5rem;
                     width: 20rem;
+                    background-color: white;
 
                     &:focus {
                         outline-color: #A8BDFF;
                     }
+                }
+
+                .muiDatePicker {
+                    width: 22rem;
+                    border-radius: 0.5rem;
+                    background-color: white;
                 }
             }
 
@@ -62,15 +73,16 @@
                     border: none;
                     border-radius: 0.5rem;
                     cursor: pointer;
-                    width: 45%;
                 }
 
                 .signUp-button {
                     background-color: #20c997;
+                    width: 45%;
                 }
-                
+
                 .logIn-button {
                     background-color: #0d6efd;
+                    width: 45%;
                 }
             }
         }

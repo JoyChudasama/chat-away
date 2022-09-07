@@ -1,9 +1,9 @@
 import React from 'react';
 import './SignUp.scss';
-// import BasicDatePicker from '../components/DatePicker';
+import MuiDatePicker from '../../components/MuiDatePicker';
+import TextField from '@mui/material/TextField';
 
 const Register = () => {
-
 
     return (
         <div className='formContainerWrapper'>
@@ -14,11 +14,11 @@ const Register = () => {
 
                 <form>
                     <div className='formInputContainer'>
-                        <input type="text" className="userName-input" placeholder='Username' />
-                        <input type="email" className="email-input" placeholder='Email' />
-                        <input type="password" className="password-input" placeholder='Password' />
-                        <input type="password" className="confirmPassword-input" placeholder='Confirm Password' />
-                        {/* <BasicDatePicker /> */}
+                        <TextField type='text' label='Username' />
+                        <TextField type='email' label='Email' />
+                        <TextField type='password' label='Password' />
+                        <TextField type='password' label='Confirm Password' />
+                        <MuiDatePicker label="Date of Birth" />
                     </div>
 
                     <div className='buttonContainer'>

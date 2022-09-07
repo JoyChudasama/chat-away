@@ -4,10 +4,9 @@ import SignUp from './pages/Signup/SignUp';
 
 function App() {
   return (
-    <div className="App">
-      <SignUp />
-      <Login />
-    </div>
+      <div className="App">
+        <SignUp />
+      </div>
   );
 }
 

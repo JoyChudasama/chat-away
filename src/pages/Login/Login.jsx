@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.scss';
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
 
@@ -12,8 +13,8 @@ const Login = () => {
 
         <form>
           <div className='formInputContainer'>
-            <input type="text" className="userName-input" placeholder='Username' />
-            <input type="password" className="password-input" placeholder='Password' />
+            <TextField label='Username' className="userName-input" />
+            <TextField type='password' label='Password' className="password-input" />
           </div>
 
           <div className='buttonContainer'>

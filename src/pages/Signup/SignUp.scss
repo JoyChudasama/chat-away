@@ -1,0 +1,81 @@
+.formContainerWrapper {
+    background-color: whitesmoke;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 4rem;
+        font-family: 'Courgette', cursive;
+        background: linear-gradient(240deg, rgba(32, 201, 151, 1) 0%, rgba(32, 201, 151, 1) 48%, rgba(13, 110, 253, 1) 74%, rgba(13, 110, 253, 1) 79%, rgba(13, 110, 253, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 5rem;
+
+        form {
+
+            .formInputContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                input {
+                    padding: 1rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    width: 20rem;
+
+                    &:focus {
+                        outline-color: #A8BDFF;
+                    }
+                }
+            }
+
+            .buttonContainer {
+                padding-top: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                button {
+                    color: white;
+                    padding: 0.8rem;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                }
+
+                .signUp-button {
+                    background-color: #20c997;
+                    width: 45%;
+                }
+
+                .logIn-button {
+                    background-color: #0d6efd;
+                    width: 45%;
+                }
+            }
+        }
+
+    }
+
+}

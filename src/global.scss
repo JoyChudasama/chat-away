@@ -6,8 +6,20 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-}
+    background-color: whitesmoke;
+    height: 100vh;
 
-.d-none {
-    display: none;
+    .logo {
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 4rem;
+        font-family: 'Courgette', cursive;
+        background: linear-gradient(240deg, rgba(32, 201, 151, 1) 0%, rgba(32, 201, 151, 1) 48%, rgba(13, 110, 253, 1) 74%, rgba(13, 110, 253, 1) 79%, rgba(13, 110, 253, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .d-none {
+        display: none;
+    }
 }

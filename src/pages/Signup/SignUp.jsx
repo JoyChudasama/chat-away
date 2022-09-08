@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.scss';
-import MuiDatePicker from '../../components/MuiDatePicker';
+import MuiDatePicker from '../../components/MuiComponents/MuiDatePicker';
 import TextField from '@mui/material/TextField';
 
 const Register = () => {

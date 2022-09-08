@@ -9,7 +9,7 @@ const Register = () => {
         <div className='formContainerWrapper'>
             <div className='formContainer'>
 
-                <span className='logo'>Chat Away</span>
+                <span className='logo'>Chat Away...</span>
                 <span className='title'>Sign Up</span>
 
                 <form>

@@ -8,7 +8,7 @@ const Login = () => {
     <div className='formContainerWrapper'>
       <div className='formContainer'>
 
-        <span className='logo'>Chat Away</span>
+        <span className='logo'>Chat Away...</span>
         <span className='title'>Log In</span>
 
         <form>

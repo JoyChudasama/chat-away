@@ -8,7 +8,7 @@ export const UserHome = () => {
     <>
       <div className='logoContainerWrapper'>
         <div className='logoContainer'>
-          <span className="logo">Chat Away</span>
+          <span className="logo">Chat Away...</span>
         </div>
       </div>
 

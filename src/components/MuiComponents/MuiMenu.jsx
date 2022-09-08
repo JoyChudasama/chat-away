@@ -21,11 +21,12 @@ export default function MuiMenu(props) {
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
+                disableTouchRipple={true}
             >
                 <MoreVertIcon />
             </IconButton>
 
-            <Menu id="menu" MenuListProps={{ 'aria-labelledby': 'menuButton' }} anchorEl={anchorEl} open={open} onClose={handleClose}
+            <Menu id="menu" MenuListProps={{ 'aria-labelledby': 'menu' }} anchorEl={anchorEl} open={open} onClose={handleClose}
                 anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >

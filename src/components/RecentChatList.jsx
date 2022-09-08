@@ -1,6 +1,7 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import tempAvatar from '../img/avatar.jpg';
+import defaultAvatar from '../img/defaultAvatar.jpg';
 
 const RecentChatList = () => {
 
@@ -16,7 +17,7 @@ const RecentChatList = () => {
       </div>
 
       <div className='recentChatCard'>
-        <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={tempAvatar} />
+        <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={defaultAvatar} />
         <div className='recentChat'>
           <span className='recentChatUsername'>Jane</span>
           <p className='recentChatMessage'>Recent chat recent message</p>

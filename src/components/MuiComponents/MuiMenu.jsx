@@ -15,8 +15,8 @@ export default function MuiMenu(props) {
     return (
         <div>
             <IconButton
-                aria-label="more"
-                id="button"
+                aria-label="menuButton"
+                id="menuButton"
                 aria-controls={open ? 'menu' : undefined}
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
@@ -25,7 +25,7 @@ export default function MuiMenu(props) {
                 <MoreVertIcon />
             </IconButton>
 
-            <Menu id="menu" MenuListProps={{ 'aria-labelledby': 'button' }} anchorEl={anchorEl} open={open} onClose={handleClose}
+            <Menu id="menu" MenuListProps={{ 'aria-labelledby': 'menuButton' }} anchorEl={anchorEl} open={open} onClose={handleClose}
                 anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >

@@ -33,47 +33,76 @@
                 padding: 1rem;
                 display: flex;
                 justify-content: space-between;
+                background-color: #0067ff;
+                color: white;
 
                 .userInfo {
                     display: flex;
                     align-items: center;
                     gap: 1.5rem;
+                    
+                    .loggedInUserName{
+                        font-weight: bold;
+                    }
+                }
+
+                #menuButton{
+                    color: white;
                 }
 
             }
 
             .searchBar {
                 padding: 1rem;
-
+                
                 .searchForm {
                     input {
                         border: none;
                         outline: none;
-                        width: 100%;
-                        border-bottom: 1px solid lightgray;
-                        border-radius: 1rem;
+                        width: 95%;
+                        border-top-left-radius: 1rem;
+                        border-top-right-radius: 1rem;
                         padding: 0.5rem;
                     }
                 }
 
                 .searchResult {
-                    margin-top: 1rem;
+                    width: 94.5%;
                     padding: 0.5rem;
                     display: flex;
                     gap: 1rem;
                     align-items: center;
                     cursor: pointer;
-                    border-radius: 1rem;
                     transition: all 0.5s;
+                    border: 1.5px solid#0067ff33;
+                    border-bottom-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    
+                    .searchResultProfilePicture  {
+                        transition: all 0.5s;
+                    }
 
                     .searchResultUserName {
                         font-weight: bolder;
-                    }
-
-                    &:hover {
-                        background-color: slategray;
-                        color: white;
                         transition: all 0.5s;
+                    }
+                    
+                    &:hover {
+                        background-color: #0067ff33;
+                        color: #0067ff;
+                        transition: all 0.5s;
+                        
+                        
+                        .searchResultProfilePicture  {
+                            scale: 1.2;
+                            transition: all 0.5s;
+                        }
+                        
+                        .searchResultUserName {
+                            font-weight: bolder;
+                            scale: 1.2;
+                            transition: all 0.5s;
+                        }
                     }
                 }
 
@@ -117,8 +146,6 @@
                     }
                 }
             }
-
-
         }
 
         .userChatRoom {

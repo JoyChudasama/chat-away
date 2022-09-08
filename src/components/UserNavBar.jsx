@@ -15,7 +15,7 @@ const UserNavBar = () => {
         <span className='loggedInUserName'>Temp User</span>
       </div>
 
-      <MuiMenu className='userActions' options={options} />
+      <MuiMenu options={options} />
     </div>
   )
 }

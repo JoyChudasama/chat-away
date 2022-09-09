@@ -1,11 +1,19 @@
+.logoContainerWrapper {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .formContainerWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    height: 90vh;
+    
     .title {
         font-weight: bold;
-        font-size: x-large;
+        font-size: xx-large;
     }
 
     .formContainer {

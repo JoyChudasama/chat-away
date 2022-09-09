@@ -6,6 +6,8 @@ import { UserHome } from './pages/UserHome/UserHome';
 function App() {
   return (
     <div className="App">
+      {/* <Login />
+      <SignUp /> */}
       <UserHome />
     </div>
   );

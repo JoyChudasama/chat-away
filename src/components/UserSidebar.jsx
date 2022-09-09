@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from './UserNavBar';
+import UserNavBar from './UserNavBar';
 import SearchBar from './SearchBar';
 import RecentChatList from './RecentChatList';
 
 const UserSidebar = () => {
   return (
     <div className='userSidebar'>
-      <Navbar />
+      <UserNavBar />
       <SearchBar />
       <RecentChatList />
     </div>

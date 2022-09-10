@@ -1,0 +1,17 @@
+.logoContainerWrapper {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 4rem;
+        font-family: 'Courgette', cursive;
+        background: linear-gradient(240deg, rgb(32, 201, 151) 0%, rgb(32, 201, 151) 48%, rgba(13, 110, 253, 1) 74%, rgba(13, 110, 253, 1) 79%, rgba(13, 110, 253, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+}

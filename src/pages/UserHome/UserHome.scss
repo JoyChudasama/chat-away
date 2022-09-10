@@ -1,0 +1,275 @@
+.logoContainerWrapper {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logoContainer {
+        height: 90%;
+        width: 90%;
+    }
+}
+
+.userHomeContainerWrapper {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .userHomeContainer {
+        border: none;
+        box-shadow: -2px 10px 10px #8392c5;
+        border-radius: 2rem;
+        height: 90%;
+        width: 90%;
+        overflow: hidden;
+        display: flex;
+
+        .userSidebar {
+            flex: 1;
+
+            .userNavBar {
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                background-color: #d3d8de;
+
+                .userInfo {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.5rem;
+
+                    .loggedInUserName {
+                        font-weight: 600;
+                    }
+                }
+
+                #menuButton {
+                    color: black;
+                }
+            }
+
+            .searchBar {
+                padding: 1rem;
+
+                .searchForm {
+                    input {
+                        border: none;
+                        outline: none;
+                        width: 95%;
+                        border-top-left-radius: 1rem;
+                        border-top-right-radius: 1rem;
+                        padding: 0.7rem;
+                    }
+                }
+
+                .searchResult {
+                    width: 95%;
+                    padding: 0.6rem;
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    border: 1.5px solid#0067ff33;
+                    border-bottom-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+
+                    .searchResultProfilePicture {
+                        transition: all 0.3s;
+                    }
+
+                    .searchResultUserName {
+                        transition: all 0.3s;
+                    }
+
+                    &:hover {
+                        background-color: #0067ff33;
+                        color: #0067ff;
+                        transition: all 0.3s;
+
+                        .searchResultProfilePicture {
+                            scale: 1.2;
+                            transition: all 0.3s;
+                        }
+
+                        .searchResultUserName {
+                            scale: 1.2;
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+            }
+
+            .recentChatList {
+                padding: 1rem;
+
+                .recentChatCard {
+                    padding: 0.5rem;
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                    cursor: pointer;
+                    border-radius: 1rem;
+                    transition: all 0.3s;
+
+                    .recentChat {
+                        .recentChatMessage {
+                            color: grey;
+                            font-size: small;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: lightsteelblue;
+                        color: white;
+                        transition: all 0.3s;
+
+                        .recentChat {
+                            .recentChatMessage {
+                                color: white;
+                                transition: all 0.3s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .userChatRoom {
+            flex: 2;
+            border-left: 0.5px solid lightgray;
+
+            .chatRoomNavBar {
+                padding: 1rem;
+                height: 2.5rem;
+                display: flex;
+                justify-content: space-between;
+                background-color: #d3d8de;
+
+                .senderInfo {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.5rem;
+                    color: #616366;
+                    font-weight: bold;
+                }
+            }
+
+            .chatRoomMessages {
+                padding: 1rem;
+                height: calc(100% - 9.3rem);
+                overflow-y: scroll;
+
+
+                .message {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin: 0 0 0.3rem 0;
+
+
+
+                    .messageContent {
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+
+                        span {
+                            max-width: max-content;
+                            word-break: break-word;
+                            background-color: white;
+                            padding: 0.5rem;
+                            border-top-right-radius: 1rem;
+                            border-bottom-left-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
+                        }
+
+                        img {
+                            width: 50%;
+                            object-fit: cover;
+                            border-radius: 1rem;
+                        }
+
+                        .messageTime {
+                            font-size: x-small;
+                            color: slategray;
+                            background-color: transparent;
+                            border: none;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+
+                    &.owner {
+                        flex-direction: row-reverse;
+
+                        .messageContent {
+                            span {
+                                border-top-right-radius: 0;
+                                border-top-left-radius: 1rem;
+                                border-bottom-left-radius: 1rem;
+                                border-bottom-right-radius: 1rem;
+                                background-color: #c4e7ed;
+                            }
+
+                            .messageTime {
+                                background-color: transparent;
+                                color: slategray;
+                            }
+
+                            align-items: flex-end;
+                        }
+                    }
+
+                }
+            }
+
+            .userInputsContainer {
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+
+                .userChatInputsContainer {
+                    display: flex;
+                    align-items: center;
+                    width: 90%;
+                    gap: 0.5rem;
+
+                    .userChatMessageInput {
+                        background-color: white;
+                        border-radius: 2rem;
+                        border: none;
+                        height: 2rem;
+                        padding-left: 0.5rem;
+                        width: 90%;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+
+                    .userChatFileInputContainer {
+                        .userFileInputLabel {
+                            color: #616366;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                    }
+                }
+
+                .sendButtonContainer {
+                    #sendButton {
+                        color: #0067ff;
+                    }
+                }
+            }
+
+        }
+    }
+}

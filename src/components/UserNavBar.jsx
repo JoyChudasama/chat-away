@@ -1,11 +1,9 @@
 import React from 'react'
-import MuiMenu from './MuiComponents/MuiMenu';
+import MuiUserNavMenu from './MuiComponents/MuiUserNavMenu';
 import Avatar from '@mui/material/Avatar';
 import tempAvatar from '../img/avatar.jpg';
 
 const UserNavBar = () => {
-
-  const options = ['Profile', 'LogOut'];
 
   return (
     <div className='userNavBar'>
@@ -15,7 +13,7 @@ const UserNavBar = () => {
         <span className='loggedInUserName'>Temp User</span>
       </div>
 
-      <MuiMenu options={options} />
+      <MuiUserNavMenu />
     </div>
   )
 }

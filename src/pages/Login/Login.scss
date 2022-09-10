@@ -4,8 +4,6 @@
     justify-content: center;
     height: 90vh;
 
-
-
     .loginFormContainer {
         display: flex;
         flex-direction: column;
@@ -56,13 +54,16 @@
                 align-items: center;
                 justify-content: space-between;
 
-                button {
+                button,
+                a {
                     color: white;
                     padding: 0.8rem;
                     font-weight: bold;
                     border: none;
                     border-radius: 0.5rem;
                     cursor: pointer;
+                    text-align: center;
+                    font-size: small;
                 }
 
                 .signUp-button {

@@ -3,6 +3,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Logout from '@mui/icons-material/Logout';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import { signOut } from "firebase/auth";
+import { firebaseAuth } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 export default function MuiMenu(props) {
 
@@ -11,6 +18,12 @@ export default function MuiMenu(props) {
 
     const handleClick = (event) => { setAnchorEl(event.currentTarget); };
     const handleClose = () => { setAnchorEl(null); };
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        signOut(firebaseAuth);
+    }
 
     return (
         <div>
@@ -30,15 +43,24 @@ export default function MuiMenu(props) {
                 anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-                {
-                    props.options.map((option) => (
-                        <MenuItem key={option} onClick={handleClose}>
-                            {option}
-                        </MenuItem>
-                    ))
-                }
+
+                <Link to='/user-account'>
+                    <MenuItem>
+                        <ListItemIcon>
+                            <AccountCircleRoundedIcon />
+                        </ListItemIcon>
+                        Account
+                    </MenuItem>
+                </Link>
+
+                <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                        <Logout />
+                    </ListItemIcon>
+                    Logout
+                </MenuItem>
 
             </Menu>
-        </div>
+        </div >
     );
 }

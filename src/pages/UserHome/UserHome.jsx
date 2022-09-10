@@ -4,7 +4,7 @@ import UserChatRoom from '../../components/UserChatRoom';
 import './UserHome.scss';
 import Logo from '../../components/Logo/Logo';
 
-export const UserHome = () => {
+const UserHome = () => {
   return (
     <>
       <Logo />
@@ -17,3 +17,6 @@ export const UserHome = () => {
     </>
   )
 }
+
+
+export default UserHome;

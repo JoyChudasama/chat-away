@@ -6,8 +6,8 @@ import { UserHome } from './pages/UserHome/UserHome';
 function App() {
   return (
     <div className="App">
-      {/* <Login /> */}
-      {/* <SignUp /> */}
+      <SignUp />
+      <Login />
       <UserHome />
     </div>
   );

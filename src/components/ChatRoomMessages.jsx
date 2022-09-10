@@ -3,7 +3,15 @@ import Message from './Message'
 
 const ChatRoomMessages = () => {
   return (
-    <div className='chatRoomMessages owner'>
+    <div className='chatRoomMessages'>
+
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
 
         <Message />
         <Message />

@@ -1,31 +1,26 @@
-.logoContainerWrapper {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.formContainerWrapper {
+.loginFormContainerWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 90vh;
-    
-    .title {
-        font-weight: bold;
-        font-size: xx-large;
-    }
 
-    .formContainer {
+
+
+    .loginFormContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 3rem;
         padding: 2rem 5rem;
+
+        .loginTitle {
+            font-weight: bold;
+            font-size: 3rem;
+        }
 
         form {
 
-            .formInputContainer {
+            .loginformInputContainer {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -55,7 +50,7 @@
                 }
             }
 
-            .buttonContainer {
+            .loginButtonContainer {
                 padding-top: 3rem;
                 display: flex;
                 align-items: center;

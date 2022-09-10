@@ -162,63 +162,71 @@
             .chatRoomMessages {
                 padding: 1rem;
                 height: calc(100% - 9.3rem);
-                overflow: auto;
+                overflow-y: scroll;
 
-                .messageContainer {
 
-                    .message {
+                .message {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin: 0 0 0.3rem 0;
+
+
+
+                    .messageContent {
+                        max-width: 80%;
                         display: flex;
                         flex-direction: column;
-                        gap: 5px;
-                        background-color: white;
-                        width: 70%;
-                        margin: 0.5rem 0 0.5rem 0;
-                        padding: 0.5rem 0.5rem 0 0.5rem;
-                        border-top-right-radius: 1rem;
-                        border-bottom-left-radius: 1rem;
-                        border-bottom-right-radius: 1rem;
+                        gap: 0.5rem;
 
-                        .messageContent {
-                            max-width: 100%;
-                            overflow: hidden;
-                            word-wrap: break-word;
-
-                            span {
-                            }
-
-                            img {
-                                width: 50%;
-                                height: 50%;
-                            }
+                        span {
+                            max-width: max-content;
+                            word-break: break-word;
+                            background-color: white;
+                            padding: 0.5rem;
+                            border-top-right-radius: 1rem;
+                            border-bottom-left-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
                         }
 
-                        .messageDetail {
-                            display: flex;
-                            align-items: center;
-                            justify-content: flex-end;
-                            font-size: small;
-
-                            .messageTime {
-                                padding: 0 0.5rem 0.25rem 0;
-                                color: slategray;
-                            }
+                        img {
+                            width: 50%;
+                            object-fit: cover;
+                            border-radius: 1rem;
                         }
 
-
+                        .messageTime {
+                            font-size: x-small;
+                            color: slategray;
+                            background-color: transparent;
+                            border: none;
+                            margin: 0;
+                            padding: 0;
+                        }
                     }
 
                     &.owner {
-                        direction: rtl;
+                        flex-direction: row-reverse;
 
-                        .message {
-                            direction: ltr;
-                            border-top-left-radius: 1rem;
+                        .messageContent {
+                            span {
+                                border-top-right-radius: 0;
+                                border-top-left-radius: 1rem;
+                                border-bottom-left-radius: 1rem;
+                                border-bottom-right-radius: 1rem;
+                                background-color: #c4e7ed;
+                            }
+
+                            .messageTime {
+                                background-color: transparent;
+                                color: slategray;
+                            }
+
+                            align-items: flex-end;
                         }
-
                     }
 
                 }
-
             }
 
             .userInputsContainer {

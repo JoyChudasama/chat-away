@@ -2,16 +2,13 @@ import React from 'react';
 import './SignUp.scss';
 import MuiDatePicker from '../../components/MuiComponents/MuiDatePicker';
 import TextField from '@mui/material/TextField';
+import Logo from '../../components/Logo/Logo';
 
 const Register = () => {
 
     return (
         <>
-            <div className='logoContainerWrapper'>
-                <div className='logoContainer'>
-                    <span className='logo'>Chat Away...</span>
-                </div>
-            </div>
+            <Logo />
             <div className='formContainerWrapper'>
                 <div className='formContainer'>
 

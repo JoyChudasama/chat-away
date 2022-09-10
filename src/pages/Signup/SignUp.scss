@@ -1,27 +1,20 @@
-.logoContainerWrapper {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .formContainerWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 90vh;
 
-    .title {
-        font-weight: bold;
-        font-size: xx-large;
-    }
-
     .formContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 3rem;
         padding: 2rem 5rem;
+
+        .title {
+            font-weight: bold;
+            font-size: 3rem;
+        }
 
         form {
 

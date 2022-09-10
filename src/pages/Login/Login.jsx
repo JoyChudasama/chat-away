@@ -1,29 +1,26 @@
 import React from 'react';
 import './Login.scss';
 import TextField from '@mui/material/TextField';
+import Logo from '../../components/Logo/Logo';
 
 const Login = () => {
 
   return (
     <>
-      <div className='logoContainerWrapper'>
-        <div className='logoContainer'>
-          <span className='logo'>Chat Away...</span>
-        </div>
-      </div>
+      <Logo />
 
-      <div className='formContainerWrapper'>
-        <div className='formContainer'>
+      <div className='loginFormContainerWrapper'>
+        <div className='loginFormContainer'>
 
-          <span className='title'>Log In</span>
+          <span className='loginTitle'>Log In</span>
 
           <form>
-            <div className='formInputContainer'>
-              <TextField label='Username' className="userName-input" />
-              <TextField type='password' label='Password' className="password-input" />
+            <div className='loginformInputContainer'>
+              <TextField label='Username' className="loginUserName-input" />
+              <TextField type='password' label='Password' className="loginPassword-input" />
             </div>
 
-            <div className='buttonContainer'>
+            <div className='loginButtonContainer'>
               <button className='logIn-button'>Login</button>
               <button className='signUp-button'>Sign Up</button>
             </div>

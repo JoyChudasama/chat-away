@@ -54,16 +54,16 @@ const Register = () => {
 
     const updateCurrentUserAndAddToDatabase = async (user, email, username, dateOfBirth) => {
         await updateProfile(user, { displayName: username });
-        await addUserToCollection(user, email, username, dateOfBirth);
+        await addUserToCollection(user, email, dateOfBirth);
         await createUserChatCollection(user);
 
         navigate('/user-home');
     }
 
-    const addUserToCollection = async (user, email, username, dateOfBirth) => {
+    const addUserToCollection = async (user, email, dateOfBirth) => {
         await setDoc(doc(fireabseDatabase, 'users', user.uid), {
             uid: user.uid,
-            userName: username,
+            userName: user.displayName,
             email: email,
             dateOfBirth: dateOfBirth
         });

@@ -1,7 +1,7 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import tempAvatar from '../img/avatar.jpg';
-import defaultAvatar from '../img/defaultAvatar.jpg';
+import defaultAvatar from '../img/defaultAvatar.png';
 
 const RecentChatList = () => {
 

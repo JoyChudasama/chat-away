@@ -1,5 +1,5 @@
 import React from 'react'
-import MuiChatRoomNavMenu from './MuiComponents/MuiChatRoomNavMenu';
+import ChatRoomNavMenu from './MuiComponents/ChatRoomNavMenu';
 import Avatar from '@mui/material/Avatar';
 import tempAvatar from '../img/avatar.jpg';
 
@@ -13,7 +13,7 @@ const ChatRoomNavBar = () => {
                 <span className='senderUserName'>Sender Name</span>
             </div>
 
-            <MuiChatRoomNavMenu />
+            <ChatRoomNavMenu />
         </div>
     )
 }

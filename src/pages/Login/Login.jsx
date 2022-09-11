@@ -5,7 +5,7 @@ import Logo from '../../components/Logo/Logo';
 import { useNavigate, Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase';
-
+import { showToast } from '../../utils/SweetAlert';
 
 const Login = () => {
 
@@ -26,9 +26,15 @@ const Login = () => {
       navigate('/user-home');
 
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.dir(errorCode, errorMessage)
+      showToast({
+        title: 'Incorrect email or password',
+        position: 'top-end',
+        icon: 'error',
+        timer: 2000,
+        isShowTimeProgressBar: 'error',
+        isShowConfirmButton: false,
+        customClass: 'sweetalert sweetalertToast'
+      });
     }
   }
 
@@ -43,8 +49,8 @@ const Login = () => {
 
           <form className='loginForm' onSubmit={handleSubmit}>
             <div className='loginformInputContainer'>
-              <TextField label='email' className="loginEmail-input" name='loginEmail' />
-              <TextField type='password' label='Password' className="loginPassword-input" name='loginPassword' />
+              <TextField label='Email' className="loginEmail-input" name='loginEmail' required />
+              <TextField label='Password' type='password' className="loginPassword-input" name='loginPassword' required />
             </div>
 
             <div className='loginButtonContainer'>

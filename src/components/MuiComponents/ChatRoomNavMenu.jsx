@@ -5,13 +5,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Logout from '@mui/icons-material/Logout';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import { signOut } from "firebase/auth";
-import { firebaseAuth } from '../../firebase';
-import { useNavigate } from 'react-router-dom';
+import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
+import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
+import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 
-export default function MuiMenu(props) {
+
+export default function ChatRoomNavMenu(props) {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -19,10 +19,15 @@ export default function MuiMenu(props) {
     const handleClick = (event) => { setAnchorEl(event.currentTarget); };
     const handleClose = () => { setAnchorEl(null); };
 
-    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        signOut(firebaseAuth);
+    const searchChat = () => {
+
+    }
+    const clearChat = () => {
+
+    }
+    const blockUser = () => {
+
     }
 
     return (
@@ -43,24 +48,37 @@ export default function MuiMenu(props) {
                 anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-
-                <Link to='/user-account'>
+                <Link to='/chat-room-user-profile'>
                     <MenuItem>
                         <ListItemIcon>
                             <AccountCircleRoundedIcon />
                         </ListItemIcon>
-                        Account
+                        View Profile
                     </MenuItem>
                 </Link>
 
-                <MenuItem onClick={handleLogout}>
+                <MenuItem onClick={searchChat}>
                     <ListItemIcon>
-                        <Logout />
+                        <ManageSearchRoundedIcon />
                     </ListItemIcon>
-                    Logout
+                    Search Chat
+                </MenuItem>
+
+                <MenuItem onClick={clearChat}>
+                    <ListItemIcon>
+                        <BackspaceRoundedIcon />
+                    </ListItemIcon>
+                    Clear Chat
+                </MenuItem>
+
+                <MenuItem onClick={blockUser}>
+                    <ListItemIcon>
+                        <BlockRoundedIcon />
+                    </ListItemIcon>
+                    Block User
                 </MenuItem>
 
             </Menu>
-        </div >
+        </div>
     );
 }

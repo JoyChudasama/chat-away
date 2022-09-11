@@ -1,5 +1,5 @@
 import React from 'react'
-import MuiUserNavMenu from './MuiComponents/MuiUserNavMenu';
+import UserNavMenu from './MuiComponents/UserNavMenu';
 import Avatar from '@mui/material/Avatar';
 import tempAvatar from '../img/avatar.jpg';
 
@@ -13,7 +13,7 @@ const UserNavBar = () => {
         <span className='loggedInUserName'>Temp User</span>
       </div>
 
-      <MuiUserNavMenu />
+      <UserNavMenu />
     </div>
   )
 }

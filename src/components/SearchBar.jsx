@@ -11,35 +11,38 @@ const SearchBar = () => {
 
   const [userName, setUserName] = useState('');
   const [users, setUsers] = useState([]);
-  // const [user, setUser] = useState(null);
-
-  const handleKey = (e) => {
-    e.code === 'Enter' && searchUser();
-  }
-
-  const searchUser = async () => {
-    try {
-      const searchQuery = query(collection(fireabseDatabase, "users"), where("userName", "==", userName));
-      const foundUsers = await getUsers(searchQuery);
-
-      setUsers(foundUsers);
-
-      console.log(users)
-    } catch (e) {
-      console.log(e)
-      showToast({
-        title: 'Oops..Something went wrong.',
-        position: 'top-end',
-        icon: 'error',
-        timer: 2000,
-        isShowTimeProgressBar: 'error',
-        isShowConfirmButton: false,
-        customClass: 'sweetalert sweetalertToast'
-      });
+  
+  
+  useEffect(()=>{
+    if(userName.length > 0){
+      try {
+        const searchQuery = query(collection(fireabseDatabase, "users"), where("userName", "==", userName));
+        getUsers(searchQuery).then(users=>{
+          users.forEach(user => {
+              setUsers(prevState => {
+              return  [...prevState, user];
+            })
+          });
+        });
+      } catch (e) {
+        console.log(e)
+        showToast({
+          title: 'Oops..Something went wrong.',
+          position: 'top-end',
+          icon: 'error',
+          timer: 2000,
+          isShowTimeProgressBar: 'error',
+          isShowConfirmButton: false,
+          customClass: 'sweetalert sweetalertToast'
+        });
+      }
     }
 
-
-  };
+    // return () => {
+    //   // cancel the subscription
+    //   setUsers([]);
+    // };
+  },[userName]);
 
   const getUsers = async (searchQuery) => {
     const querySnapshot = await getDocs(searchQuery);
@@ -48,11 +51,12 @@ const SearchBar = () => {
       return doc.data();
     })
   }
+  console.log(users)
 
   return (
     <div className='searchBar'>
       <div className='searchForm'>
-        <input type='text' placeholder='Search Username' onChange={e => setUserName(e.target.value)} onKeyDown={handleKey} />
+        <input type='text' placeholder='Search Username' onChange={e => setUserName(e.target.value)} value={userName} />
       </div>
 
       {

@@ -57,45 +57,44 @@
                         border: none;
                         outline: none;
                         width: 95%;
-                        border-top-left-radius: 1rem;
-                        border-top-right-radius: 1rem;
+                        border-radius: 1rem;
                         padding: 0.7rem;
                     }
                 }
 
-                .searchResult {
-                    width: 95%;
-                    padding: 0.6rem;
-                    display: flex;
-                    gap: 1rem;
-                    align-items: center;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    border: 1.5px solid#0067ff33;
-                    border-bottom-left-radius: 1rem;
-                    border-bottom-right-radius: 1rem;
+                .searchResultContainerWrapper {
+                    .searchResultContainer {
 
-                    .searchResultProfilePicture {
+                        padding: 0.5rem 1rem 0.5rem 1rem;
+                        display: flex;
+                        gap: 1rem;
+                        align-items: center;
+                        cursor: pointer;
                         transition: all 0.3s;
-                    }
-
-                    .searchResultUserName {
-                        transition: all 0.3s;
-                    }
-
-                    &:hover {
-                        background-color: #0067ff33;
-                        color: #0067ff;
-                        transition: all 0.3s;
+                        border-radius: 1rem;
 
                         .searchResultProfilePicture {
-                            scale: 1.2;
                             transition: all 0.3s;
                         }
 
                         .searchResultUserName {
-                            scale: 1.2;
                             transition: all 0.3s;
+                        }
+
+                        &:hover {
+                            background-color: #0067ff33;
+                            color: #0067ff;
+                            transition: all 0.3s;
+    
+                            .searchResultProfilePicture {
+                                scale: 1.2;
+                                transition: all 0.3s;
+                            }
+    
+                            .searchResultUserName {
+                                scale: 1.2;
+                                transition: all 0.3s;
+                            }
                         }
                     }
                 }

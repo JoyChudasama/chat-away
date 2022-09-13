@@ -8,6 +8,7 @@ import { fireabaseDatabase, firebaseAuth, firebaseStorage } from '../../firebase
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { showToast } from '../../utils/SweetAlert';
+import { ref, uploadBytesResumable, file, getDownloadURL } from 'firebase/storage';
 
 const Register = () => {
 
@@ -49,6 +50,23 @@ const Register = () => {
 
     const createUser = async (email, password) => {
         const userCredentialImpl = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+        
+        // const randomNumberForImage = Math.floor(Math.random() * (8 - 1 + 1) + 1);
+        // const image = `../img/default/defaultAvatar${randomNumberForImage}.png'`;
+        // const storageRef = ref(firebaseStorage, image);
+        // const uploadTask = uploadBytesResumable(storageRef, image);
+
+        // uploadTask.on(() => {
+        //     (error) => {
+
+        //     },
+        //     () => {
+        //         getDownloadURL(uploadTask.snapshot.ref).then(downloadUrl => {
+        //             console.log(downloadUrl);
+        //         });
+        //     }
+        // });
+
         return userCredentialImpl.user;
     }
 

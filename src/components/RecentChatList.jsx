@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import tempAvatar from '../img/avatar.jpg';
-import defaultAvatar from '../img/defaultAvatar.png';
+import defaultAvatar from '../img/default/defaultAvatar2.png';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { fireabaseDatabase } from '../firebase';
 import { useContext } from 'react';
@@ -13,7 +12,6 @@ const RecentChatList = () => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-
 
     const getRecentChats = () => {
       const unsub = onSnapshot(doc(fireabaseDatabase, 'userChats', currentUser.uid), (doc) => {
@@ -35,10 +33,10 @@ const RecentChatList = () => {
       {
         Object.entries(recentChats)?.map(recentChat =>
           <div key={recentChat[0]} className='recentChatCard'>
-            <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={tempAvatar} />
+            <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={defaultAvatar} />
             <div className='recentChat'>
               <span className='recentChatUsername'>{recentChat[1].userInfo.userName}</span>
-              <p className='recentChatMessage'>Recent chat recent message</p>
+              <p className='recentChatMessage'>{recentChat[1].userInfo.latestMessage}</p>
             </div>
           </div>
         )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import tempAvatar from '../img/avatar.jpg';
+import tempAvatar from '../img/default/defaultAvatar2.png';
 import { fireabaseDatabase } from '../firebase';
 import { collection, query, where, getDocs, setDoc, updateDoc, doc, serverTimestamp, getDoc } from "firebase/firestore";
 import { showToast } from '../utils/SweetAlert';

@@ -1,5 +1,5 @@
 import React from 'react'
-import tempAvatar from '../img/avatar.jpg';
+import tempAvatar from '../img/default/defaultAvatar1.png';
 
 const Message = () => {
   return (

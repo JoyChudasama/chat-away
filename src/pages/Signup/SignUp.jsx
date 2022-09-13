@@ -4,7 +4,7 @@ import DatePickerWidget from '../../components/MuiComponents/DatePickerWidget';
 import TextField from '@mui/material/TextField';
 import Logo from '../../components/Logo/Logo';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { fireabseDatabase, firebaseAuth, firebaseStorage } from '../../firebase';
+import { fireabaseDatabase, firebaseAuth, firebaseStorage } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { showToast } from '../../utils/SweetAlert';
@@ -61,7 +61,7 @@ const Register = () => {
     }
 
     const addUserToCollection = async (user, email, dateOfBirth) => {
-        await setDoc(doc(fireabseDatabase, 'users', user.uid), {
+        await setDoc(doc(fireabaseDatabase, 'users', user.uid), {
             uid: user.uid,
             userName: user.displayName,
             email: email,
@@ -70,7 +70,7 @@ const Register = () => {
     }
 
     const createUserChatCollection = async (user) => {
-        await setDoc(doc(fireabseDatabase, 'userChats', user.uid), {});
+        await setDoc(doc(fireabaseDatabase, 'userChats', user.uid), {});
     }
 
     return (

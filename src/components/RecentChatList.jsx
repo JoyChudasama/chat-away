@@ -5,11 +5,13 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { fireabaseDatabase } from '../firebase';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { ChatContext } from '../context/ChatContext';
 
 const RecentChatList = () => {
   const [recentChats, setRecentChats] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   useEffect(() => {
 
@@ -25,18 +27,20 @@ const RecentChatList = () => {
 
   }, [currentUser.uid])
 
-
+  const handleSelect = (selectedUser) => {
+    dispatch({ type: "CHANGE_USER", payload: selectedUser });
+  }
 
   return (
     <div className='recentChatList'>
 
       {
-        Object.entries(recentChats)?.map(recentChat =>
-          <div key={recentChat[0]} className='recentChatCard'>
+        recentChats && Object.entries(recentChats).sort((a,b)=>b[1].date - a[1].date).map(recentChat =>
+          <div key={recentChat[0]} className='recentChatCard' onClick={() => handleSelect(recentChat[1].userInfo)}>
             <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={defaultAvatar} />
             <div className='recentChat'>
               <span className='recentChatUsername'>{recentChat[1].userInfo.userName}</span>
-              <p className='recentChatMessage'>{recentChat[1].userInfo.latestMessage}</p>
+              <p className='recentChatMessage'>{recentChat[1].latestMessage && recentChat[1].latestMessage.text}</p>
             </div>
           </div>
         )

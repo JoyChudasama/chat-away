@@ -1,35 +1,35 @@
-import React, { useEffect } from 'react'
+import { doc, onSnapshot } from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react'
+import { ChatContext } from '../context/ChatContext';
+import { fireabaseDatabase } from '../firebase';
 import Message from './Message'
 
 const ChatRoomMessages = () => {
+  const { data } = useContext(ChatContext);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-  
-    //Keeping scrollbar at the bottom
-    const objDiv = document.getElementById("chatRoomMessages");
-    objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-  
-  }, [])
+
+    const unsub = onSnapshot(doc(fireabaseDatabase, 'chats', data.chatId), (doc) => {
+      doc.exists() && setMessages(() => doc.data().messages);
+    });
+
+    return () => unsub();
+
+  }, [data.chatId])
 
   return (
     <div className='chatRoomMessages' id="chatRoomMessages">
-
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-
+      {
+        messages.length > 0
+          ? messages.map(message =>
+            <Message key={message.id} message={message} />
+          )
+          :
+          data.user.userName && <div className='haventStartedConversation'>
+            This is the start of your conversation with {data.user.userName}
+          </div>
+      }
     </div>
   )
 }

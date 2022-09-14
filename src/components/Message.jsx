@@ -1,21 +1,27 @@
-import React from 'react'
-import tempAvatar from '../img/default/defaultAvatar1.png';
+import React, { useContext, useEffect, useRef } from 'react'
+import { AuthContext } from '../context/AuthContext';
+import { ChatContext } from '../context/ChatContext';
 
-const Message = () => {
+const Message = ({ message }) => {
+
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+
+
+  useEffect(() => {
+    //Keeps scrollbar at the bottom
+    const objDiv = document.getElementById("chatRoomMessages");
+    objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
+
+  }, [message]);
+
   return (
     <>
-      <div className='message owner'>
+      <div className={`message ${message.senderId === currentUser.uid && 'owner'}`}>
         <div className="messageContent">
-          <span className='messageText'>Hello Hello Hello</span>
-          <img src={tempAvatar} alt="Sent Image" />
-          <span className="messageTime">7:35 pm</span>
-        </div>
-      </div>
-
-      <div className='message'>
-        <div className="messageContent">
-          <span className='messageText'>Hi Wassup</span>
-          <span className="messageTime">Just now</span>
+          {message.text && <span className='messageText'>{message.text}</span>}
+          {message.img && <img src={message.img} alt="Sent Image" />}
+          <span className="messageTime">just now</span>
         </div>
       </div>
     </>

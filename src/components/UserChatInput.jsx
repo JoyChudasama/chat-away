@@ -28,7 +28,7 @@ const UserChatInput = () => {
             id: uuid(),
             text: text,
             senderId: currentUser.uid,
-            date: Timestamp.now()
+            date: Timestamp.now().toDate()
           })
         });
       } else {
@@ -58,15 +58,14 @@ const UserChatInput = () => {
 
       await updateDoc(doc(fireabaseDatabase, 'userChats', currentUser.uid), {
         [data.chatId + ".latestMessage"]: {
-          text,
-          date: new Date()
+          text: 'sent: ' + text
         },
         [data.chatId + '.date']: serverTimestamp()
       });
 
       await updateDoc(doc(fireabaseDatabase, 'userChats', data.user.uid), {
         [data.chatId + ".latestMessage"]: {
-          text
+          text: 'recieved: ' + text
         },
         [data.chatId + '.date']: serverTimestamp()
       });
@@ -74,7 +73,6 @@ const UserChatInput = () => {
     }catch(error){
       console.log(error)
     }
-
 
     setText('');
     setImg(null);

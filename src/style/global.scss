@@ -20,4 +20,9 @@ body {
     .sweetalert {
         font-size: 0.8rem !important;
     }
+
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
 }

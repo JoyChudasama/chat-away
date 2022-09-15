@@ -7,9 +7,9 @@ import Message from './Message'
 const ChatRoomMessages = () => {
   const { data } = useContext(ChatContext);
   const [messages, setMessages] = useState([]);
-
+  
   useEffect(() => {
-
+    
     const unsub = onSnapshot(doc(fireabaseDatabase, 'chats', data.chatId), (doc) => {
       doc.exists() && setMessages(() => doc.data().messages);
     });

@@ -10,15 +10,23 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { ChatContext } from '../../context/ChatContext';
 
 export default function UserNavMenu(props) {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const { dispatch } = useContext(ChatContext);
+    const navigate = useNavigate();
 
     const handleMenuClick = (event) => { setAnchorEl(event.currentTarget) };
     const handleMenuClose = () => { setAnchorEl(null) };
-    const handleLogout = () => { signOut(firebaseAuth) };
+
+    const handleLogout = () => {
+        signOut(firebaseAuth);
+        navigate('/login');
+        dispatch({ type: "RESET" });
+    };
 
     return (
         <div>

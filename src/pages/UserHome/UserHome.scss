@@ -117,15 +117,9 @@
                             font-size: small;
                         }
 
-                        .recentChatInfo {
-                            // display: flex;
-                            // align-items: flex-start;
-                            // flex-direction: column;
-                         
-                            .recentChatMessageTime {
-                                color: grey;
-                                font-size: x-small;
-                            }
+                        .recentChatMessageTime {
+                            color: grey;
+                            font-size: x-small;
                         }
                     }
 
@@ -270,6 +264,10 @@
                 .sendButtonContainer {
                     #sendButton {
                         color: #0067ff;
+
+                        &:disabled {
+                            color: #616366;
+                        }
                     }
                 }
             }

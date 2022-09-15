@@ -8,6 +8,7 @@ import { fireabaseDatabase, firebaseAuth, firebaseStorage } from '../../firebase
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { showToast } from '../../utils/SweetAlert';
+import { getDownloadURL, ref } from 'firebase/storage';
 
 const Register = () => {
 
@@ -54,19 +55,23 @@ const Register = () => {
 
     const updateCurrentUserAndAddToDatabase = async (user, email, username, dateOfBirth) => {
 
-        await updateProfile(user, { displayName: username });
-        await addUserToCollection(user, email, dateOfBirth);
+        const randomNumber = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+        const imgURL = await getDownloadURL(ref(firebaseStorage, `img/default/defaultAvatar${randomNumber}.png`));
+
+        await updateProfile(user, { displayName: username, photoURL: imgURL });
+        await addUserToCollection(user, email, dateOfBirth, imgURL);
         await createUserChatCollection(user);
 
         navigate('/user-home');
     }
 
-    const addUserToCollection = async (user, email, dateOfBirth) => {
+    const addUserToCollection = async (user, email, dateOfBirth, photoURL) => {
         await setDoc(doc(fireabaseDatabase, 'users', user.uid), {
             uid: user.uid,
             userName: user.displayName,
             email: email,
-            dateOfBirth: dateOfBirth
+            dateOfBirth: dateOfBirth,
+            photoURL: photoURL
         });
     }
 

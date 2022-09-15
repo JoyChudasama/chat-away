@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import tempAvatar from '../img/default/defaultAvatar2.png';
 import { fireabaseDatabase } from '../firebase';
 import { collection, query, where, getDocs, setDoc, updateDoc, doc, serverTimestamp, getDoc } from "firebase/firestore";
 import { showToast } from '../utils/SweetAlert';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useRef } from 'react';
 
 const SearchBar = () => {
 
   const [userName, setUserName] = useState('');
   const [users, setUsers] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const searchInput = useRef();
 
   useEffect(() => {
     handleUserSearch();
@@ -57,7 +58,8 @@ const SearchBar = () => {
         await updateDoc(doc(fireabaseDatabase, 'userChats', currentUser.uid), {
           [combinedId + '.userInfo']: {
             uid: selectedUser.uid,
-            userName: selectedUser.userName
+            userName: selectedUser.userName,
+            photoURL: selectedUser.photoURL
           },
           [combinedId + '.date']: serverTimestamp()
         });
@@ -65,12 +67,12 @@ const SearchBar = () => {
         await updateDoc(doc(fireabaseDatabase, 'userChats', selectedUser.uid), {
           [combinedId + '.userInfo']: {
             uid: currentUser.uid,
-            userName: currentUser.displayName
+            userName: currentUser.displayName,
+            photoURL: currentUser.photoURL
           },
           [combinedId + '.date']: serverTimestamp()
         })
       }
-
 
     } catch (e) {
       showToast({
@@ -88,6 +90,11 @@ const SearchBar = () => {
     setUserName('');
   }
 
+  const handleKey = (e) => {
+    if (e.code === 'Backspace' && searchInput.current.value === '') setUserName('');
+  }
+
+
   return (
     <div className='searchBar'>
 
@@ -97,21 +104,33 @@ const SearchBar = () => {
           handleUserSearch()
         }}
           value={userName}
+          onKeyDown={handleKey}
+          ref={searchInput}
         />
 
       </div>
       {
-        users && users.map(user =>
+        users.length > 0 ? users.map(user =>
           <div key={user.uid} className='searchResultContainerWrapper' onClick={() => handleSelect(user)}>
             <div className='searchResultContainer'>
-              <Avatar className='searchResultProfilePicture' alt="Profile Picture" src={tempAvatar} />
+              <Avatar className='searchResultProfilePicture' alt="Profile Picture" src={user.photoURL} />
               <div className='searchResultUserName'>
                 <span>{user.userName}</span>
               </div>
             </div>
           </div>
-        )}
+        )
+          : userName && <div className='searchResultContainerWrapper'>
+            <div className='searchResultContainer'>
 
+              <div className='searchResultUserName'>
+                <span>No User Found</span>
+              </div>
+            </div>
+          </div>
+
+
+      }
 
     </div >
   )

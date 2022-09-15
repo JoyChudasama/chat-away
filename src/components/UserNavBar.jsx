@@ -12,7 +12,7 @@ const UserNavBar = () => {
     <div className='userNavBar'>
 
       <div className='userInfo'>
-        <Avatar className='loggedInUserAvatar' alt="Profile Picture" src={currentUser.photoURL} />
+        <Avatar className='loggedInUserAvatar' alt="Profile Picture" src={currentUser.photoURL && currentUser.photoURL} />
         <span className='loggedInUserName'>{currentUser.displayName}</span>
       </div>
 

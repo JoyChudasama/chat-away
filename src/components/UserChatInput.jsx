@@ -11,6 +11,7 @@ import { v4 as uuid } from 'uuid';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useRef } from 'react';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import { isEmpty } from '@firebase/util';
 
 const UserChatInput = () => {
 
@@ -92,31 +93,33 @@ const UserChatInput = () => {
   }
 
   return (
-    <div className='userInputsContainer'>
-      <div className='userChatInputsContainer'>
-        {img && <Avatar className='selectedImage' sx={{ width: '3rem', height: '3rem' }} alt="uploaded img" src={URL.createObjectURL(img)} />}
-        {img && <IconButton id='sendButton' size='small' color='error' onClick={handleRemoveImage}>
-          <ClearRoundedIcon fontSize='small' />
-        </IconButton>}
+    <>
+      {!isEmpty(data.user) && <div className='userInputsContainer'>
 
-        <input type='text' placeholder='Message' className='userChatMessageInput' onChange={e => setText(e.target.value)} onKeyDown={handleKey} ref={chatInput} value={text} />
+        <div className='userChatInputsContainer'>
+          {img && <Avatar className='selectedImage' sx={{ width: '3rem', height: '3rem' }} alt="uploaded img" src={URL.createObjectURL(img)} />}
+          {img && <IconButton id='sendButton' size='small' color='error' onClick={handleRemoveImage}>
+            <ClearRoundedIcon fontSize='small' />
+          </IconButton>}
 
-        <div className='userChatFileInputContainer'>
-          <input type='file' className='d-none' id="userChatFileInput" accept='image/png, image/gif, image/jpeg' onChange={e => setImg(e.target.files[0])} />
-          <label htmlFor='userChatFileInput' className='userFileInputLabel' >
-            <AddPhotoAlternateRoundedIcon />
-          </label>
+          <input type='text' placeholder='Message' className='userChatMessageInput' onChange={e => setText(e.target.value)} onKeyDown={handleKey} ref={chatInput} value={text} />
+
+          <div className='userChatFileInputContainer'>
+            <input type='file' className='d-none' id="userChatFileInput" accept='image/png, image/gif, image/jpeg' onChange={e => setImg(e.target.files[0])} />
+            <label htmlFor='userChatFileInput' className='userFileInputLabel' >
+              <AddPhotoAlternateRoundedIcon />
+            </label>
+          </div>
+
         </div>
 
-      </div>
-
-      <div className='sendButtonContainer'>
-        <IconButton id='sendButton' onClick={handleSendMessage} disabled={!text && !img ? true : false}>
-          <SendRoundedIcon />
-        </IconButton>
-      </div>
-    </div>
-
+        <div className='sendButtonContainer'>
+          <IconButton id='sendButton' onClick={handleSendMessage} disabled={!text && !img ? true : false}>
+            <SendRoundedIcon />
+          </IconButton>
+        </div>
+      </div>}
+    </>
 
   )
 }

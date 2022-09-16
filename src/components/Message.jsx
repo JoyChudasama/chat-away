@@ -12,7 +12,7 @@ const Message = ({ message }) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [message]);
+  }, [message, data]);
 
   const scrollToBottom = () => {
     const objDiv = document.getElementById("chatRoomMessages");

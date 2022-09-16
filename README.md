@@ -9,8 +9,8 @@ Installs the necessary dependencies.
 
 ### `firebase setup`
 
-current setup requires firebase app secrets to be stored in .env
-You may store your secrets in .env or modify firebase.js in /src/firebase.js to store secrets directly
+current setup requires firebase app secrets to be stored in .env and use it in /src/config.js
+You may store your secrets in .env and import it to config.js or modify firebase.js in /src/firebase.js to store secrets directly.
 
 ### `npm start`
 

@@ -2,13 +2,14 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useState, useContext } from 'react';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
+import { ChatContext } from '../../context/ChatContext';
+import { showModal } from '../../utils/SweetAlert';
 
 
 export default function ChatRoomNavMenu(props) {
@@ -16,16 +17,25 @@ export default function ChatRoomNavMenu(props) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-    const handleClick = (event) => { setAnchorEl(event.currentTarget); };
-    const handleClose = () => { setAnchorEl(null); };
+    const { data } = useContext(ChatContext);
 
+    const handleClick = (event) => { setAnchorEl(event.currentTarget); };
+    const handleClose = () => { setAnchorEl(null) };
+
+
+    const showUserProfile = () => {
+        handleClose();
+        showModal({ userName: data.user.userName, photoURL: data.user.photoURL, email: data.user.email });
+    }
 
     const searchChat = () => {
 
     }
+
     const clearChat = () => {
 
     }
+
     const blockUser = () => {
 
     }
@@ -48,14 +58,12 @@ export default function ChatRoomNavMenu(props) {
                 anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-                <Link to='/chat-room-user-profile'>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <AccountCircleRoundedIcon />
-                        </ListItemIcon>
-                        View Profile
-                    </MenuItem>
-                </Link>
+                <MenuItem onClick={showUserProfile}>
+                    <ListItemIcon>
+                        <AccountCircleRoundedIcon />
+                    </ListItemIcon>
+                    View Profile
+                </MenuItem>
 
                 <MenuItem onClick={searchChat}>
                     <ListItemIcon>

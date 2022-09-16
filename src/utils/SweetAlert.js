@@ -1,4 +1,7 @@
+import { TextField } from '@mui/material';
 import Swal from 'sweetalert2';
+import '../style/sweetalert.scss';
+import 'animate.css';
 
 /**
  * @namespace {Object} props
@@ -31,4 +34,47 @@ const showToast = (props) => {
     Toast.fire()
 }
 
-export { showToast };
+
+
+const showModal = (props) => {
+
+    const htmlTemplate = `
+                            <div className="chatUserProfileContainer" style="display:flex; flex-direction: column; justify-content: center; gap:2rem;">
+                                <div className="chatUserProfileheader" style="display:flex; justify-content: center;align-items: center; gap: 2rem;">
+                                    <img src=${props.photoURL} alt="N/A" height="100px" width="100px" /> 
+                                    <span className="userName" style="font-size:2rem; font-weight:bold;">${props.userName ? props.userName : 'N/A'}</span>
+                                </div>
+                                <div className="chatUserProfileBody" style="display:flex;flex-direction: column; justify-content: center;align-items: center; gap: 2rem;">
+
+                                <div style="display:flex; justify-content: center;align-items: center; gap: 1rem;">
+                                        <label for="email" style="font-weight:bold; color:gray">Email</label>
+                                        <input type="text" id="email" value=${props.email ? props.email : 'N/A'} disabled style=" 
+                                            padding: 0.5rem;
+                                            border: none;
+                                            border-radius: 1rem;
+                                            background-color: white;
+                                            text-align: center;
+                                            font-size: 1rem;" 
+                                        />
+                                </div>
+
+                                </div>
+                            </div>
+                        `
+
+    Swal.fire({
+        html: htmlTemplate,
+        showCloseButton: true,
+        showConfirmButton: false,
+        customClass: 'sweetalert modal profileModal',
+        showClass: {
+            popup: 'animate__animated animate__fadeIn animate__faster'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut animate__faster'
+        }
+    })
+
+}
+
+export { showToast, showModal };

@@ -1,0 +1,25 @@
+.sweetalert {
+    font-size: 0.8rem !important;
+
+    &.modal {
+        width: 30rem;
+        
+        background-color: whitesmoke;
+
+        &.profileModal {
+            max-width: 30rem !important;
+            height: 20rem;
+            overflow: hidden;
+        }
+    }
+
+    button {
+
+
+        &:focus {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+}

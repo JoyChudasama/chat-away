@@ -11,6 +11,7 @@ import { v4 as uuid } from 'uuid';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useRef } from 'react';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import { isEmpty } from '@firebase/util';
 
 const UserChatInput = () => {
 
@@ -116,8 +117,6 @@ const UserChatInput = () => {
         </IconButton>
       </div>
     </div>
-
-
   )
 }
 

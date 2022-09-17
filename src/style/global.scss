@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
-
 @import url('./utility.scss');
 
 body {
@@ -15,10 +14,6 @@ body {
     a {
         text-decoration: none !important;
         color: black;
-    }
-
-    .sweetalert {
-        font-size: 0.8rem !important;
     }
 
     ::-webkit-scrollbar {

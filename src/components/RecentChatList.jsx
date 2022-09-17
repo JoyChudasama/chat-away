@@ -42,7 +42,7 @@ const RecentChatList = () => {
             <Avatar className='recentChatProfilePicture' alt="Profile Picture" src={recentChat[1].userInfo.photoURL} />
             <div className='recentChat'>
               <span className='recentChatUsername'>{recentChat[1].userInfo.userName}</span>
-              <p className='recentChatMessage'>{recentChat[1].latestMessage && recentChat[1].latestMessage.text}</p>
+              <p className='recentChatMessage'>{recentChat[1].latestMessage && recentChat[1].latestMessage.text.length > 50 && recentChat[1].latestMessage.text.substring(0, 50)}</p>
               <p className='recentChatMessageTime'>{recentChat[1].date && convertFirebaseTimestampToHoursAndMinuteForMessage(recentChat[1].date)}</p>
             </div>
           </div>

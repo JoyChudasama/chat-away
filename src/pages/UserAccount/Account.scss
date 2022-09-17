@@ -1,0 +1,112 @@
+.accountContainerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+
+    .accountContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+        box-shadow: -2px 10px 10px #8392c5;
+        border-radius: 2rem;
+        height: 90%;
+        width: 90%;
+        overflow: hidden;
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 3rem;
+            padding-top: 1rem;
+
+            .imageContainer {
+
+                position: relative;
+
+                >img {
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 50%;
+                }
+
+                .editIcon {
+                    position: absolute;
+                    bottom: 2%;
+                    right: 10%;
+                    color: black;
+                    padding: 0.5rem;
+                    background: whitesmoke;
+                    border-radius: 25%;
+                    padding: 0.1rem;
+                    cursor:default;
+                }
+            }
+
+            .userTitle {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+
+
+        form {
+            .accountFormInputContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                fieldset {
+                    border: none;
+                }
+
+                input {
+                    padding: 1rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    width: 20rem;
+                    background-color: white;
+
+                    &:focus {
+                        outline-color: #A8BDFF;
+                    }
+                }
+
+                .muiDatePicker {
+                    width: 22rem;
+                    border-radius: 0.5rem;
+                    background-color: white;
+                }
+            }
+
+            .buttonContainer {
+                padding-top: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                button,
+                a {
+                    color: white;
+                    padding: 0.8rem;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    text-align: center;
+                    font-size: small;
+                }
+
+                .submit-button {
+                    background-color: #0d6efd;
+                    width: 100%;
+                }
+
+            }
+        }
+    }
+}

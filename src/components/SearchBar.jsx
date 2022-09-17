@@ -59,7 +59,8 @@ const SearchBar = () => {
           [combinedId + '.userInfo']: {
             uid: selectedUser.uid,
             userName: selectedUser.userName,
-            photoURL: selectedUser.photoURL
+            photoURL: selectedUser.photoURL,
+            email: selectedUser.email
           },
           [combinedId + '.date']: serverTimestamp()
         });
@@ -68,7 +69,8 @@ const SearchBar = () => {
           [combinedId + '.userInfo']: {
             uid: currentUser.uid,
             userName: currentUser.displayName,
-            photoURL: currentUser.photoURL
+            photoURL: currentUser.photoURL,
+            email: selectedUser.email
           },
           [combinedId + '.date']: serverTimestamp()
         })

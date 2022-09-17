@@ -6,6 +6,7 @@ import Landing from './pages/Landing/Landing';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import Account from './pages/UserAccount/UserAccount';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
     return children;
   }
-  
+
   return (
     <BrowserRouter>
       <Routes>
@@ -29,8 +30,12 @@ function App() {
           <ProtectedRoute>
             <UserHome />
           </ProtectedRoute>
-        }
-        />
+        } />
+        <Route path='/user-account' element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        } />
       </Routes>
     </BrowserRouter>
   );

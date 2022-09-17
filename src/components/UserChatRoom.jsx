@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ChatRoomNavBar from './ChatRoomNavBar';
 import ChatRoomMessages from './ChatRoomMessages';
 import UserChatInput from './UserChatInput';
+import { ChatContext } from '../context/ChatContext';
+import { isEmpty } from '@firebase/util';
 
 const UserChatRoom = () => {
-  return (
-    <div className='userChatRoom'>
-      <ChatRoomNavBar />
-      <ChatRoomMessages />
-      <UserChatInput />    
 
-    </div>
+  const { data } = useContext(ChatContext);
+
+  return (
+    <>
+      {
+        !isEmpty(data.user) &&
+        <div className='userChatRoom'>
+
+          <ChatRoomNavBar />
+          <ChatRoomMessages />
+          <UserChatInput />
+        </div>
+      }
+    </>
   )
 }
 

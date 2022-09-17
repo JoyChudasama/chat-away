@@ -9,7 +9,10 @@ import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import { ChatContext } from '../../context/ChatContext';
-import { showModal } from '../../utils/SweetAlert';
+import { showProfileModal, showToast, showWarningModal } from '../../utils/SweetAlert';
+import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { fireabaseDatabase } from '../../firebase';
+import Swal from 'sweetalert2';
 
 
 export default function ChatRoomNavMenu(props) {
@@ -25,18 +28,53 @@ export default function ChatRoomNavMenu(props) {
 
     const showUserProfile = () => {
         handleClose();
-        showModal({ userName: data.user.userName, photoURL: data.user.photoURL, email: data.user.email });
+        showProfileModal({ userName: data.user.userName, photoURL: data.user.photoURL, email: data.user.email });
     }
 
     const searchChat = () => {
+        handleClose();
 
     }
 
-    const clearChat = () => {
+    const clearChat = async () => {
+        handleClose();
 
+        try {
+
+            Swal.fire({
+                title: 'Are you sure you want to clear chat ?',
+                text: 'Clearing/Deleting chat will result in permenant loss of messages and media file. Would you like to continue? ',
+                showCloseButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                showLoaderOnConfirm: true,
+                confirmButtonColor: '#d33',
+                customClass: 'sweetalert'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setDoc(doc(fireabaseDatabase, 'chats', data.chatId), { messages: [] }).then(() => {
+                        showToast({
+                            title: 'Chat cleared succesfully',
+                            position: 'top-end',
+                            icon: 'success',
+                            timer: 2000,
+                            isShowTimeProgressBar: 'success',
+                            isShowConfirmButton: false,
+                            customClass: 'sweetalert sweetalertToast'
+                        });
+                    });
+                }
+            })
+
+
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     const blockUser = () => {
+        handleClose();
 
     }
 

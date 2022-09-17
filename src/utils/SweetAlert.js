@@ -35,8 +35,15 @@ const showToast = (props) => {
 }
 
 
-
-const showModal = (props) => {
+/**
+ * @namespace {Object} props
+ * @memberof props
+ * @userName string
+ * @photoURL string
+ * @email string
+ * @returns void
+ */
+const showProfileModal = (props) => {
 
     const htmlTemplate = `
                             <div className="chatUserProfileContainer" style="display:flex; flex-direction: column; justify-content: center; gap:2rem;">
@@ -77,4 +84,4 @@ const showModal = (props) => {
 
 }
 
-export { showToast, showModal };
+export { showToast, showProfileModal };

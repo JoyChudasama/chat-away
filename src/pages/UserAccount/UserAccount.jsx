@@ -12,19 +12,21 @@ import { IconButton } from '@mui/material';
 
 const UserAccount = () => {
 
-
     const { currentUser } = useContext(AuthContext);
+
     const [imgUrl, setImgUrl] = useState(currentUser.photoURL);
+    const [userName, setUserName] = useState(currentUser.displayName)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const userName = e.target.userName.value;
+        const newUserName = e.target.userName.value;
         const email = e.target.email.value;
 
         try {
             // await reauthenticateWithCredential(currentUser, firebaseAuth);
-            await updateProfile(currentUser, { displayName: userName });
+            await updateProfile(currentUser, { displayName: newUserName });
+            setUserName(newUserName);
             // await updateEmail(currentUser, email);
 
             showToast({
@@ -86,13 +88,13 @@ const UserAccount = () => {
 
                             </IconButton>
                         </div>
-                        <span className='userTitle'>{currentUser.displayName}</span>
+                        <span className='userTitle'>{userName}</span>
                     </div>
 
 
                     <form className="accountForm" onSubmit={handleSubmit}>
                         <div className='accountFormInputContainer'>
-                            <TextField type='text' label='Username' name='userName' defaultValue={currentUser.displayName} />
+                            <TextField type='text' label='Username' name='userName' defaultValue={userName} />
                             <TextField type='email' label='Email' name='email' value={currentUser.email} disabled />
                         </div>
 

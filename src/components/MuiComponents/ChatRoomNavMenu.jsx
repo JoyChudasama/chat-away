@@ -9,73 +9,69 @@ import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import { ChatContext } from '../../context/ChatContext';
-import { showProfileModal, showToast, showWarningModal } from '../../utils/SweetAlert';
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { showConfirmationModal, showProfileModal, showSearchChatModal, showToast } from '../../utils/SweetAlert';
+import { doc, setDoc } from 'firebase/firestore';
 import { fireabaseDatabase } from '../../firebase';
-import Swal from 'sweetalert2';
+import { SearchChat } from '../../context/SearchChat';
 
 
 export default function ChatRoomNavMenu(props) {
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const { data } = useContext(ChatContext);
+    const { dispatch } = useContext(SearchChat);
 
     const handleClick = (event) => { setAnchorEl(event.currentTarget); };
     const handleClose = () => { setAnchorEl(null) };
 
 
-    const showUserProfile = () => {
+    const showUserProfile = async () => {
         handleClose();
         showProfileModal({ userName: data.user.userName, photoURL: data.user.photoURL, email: data.user.email });
-    }
-
-    const searchChat = () => {
-        handleClose();
-
     }
 
     const clearChat = async () => {
         handleClose();
 
         try {
+            const result = await showConfirmationModal({ title: 'Are you sure you want to clear chat?', text: 'Clearing/Deleting chat will result in permenant loss of messages and media file. Would you like to continue?' })
 
-            Swal.fire({
-                title: 'Are you sure you want to clear chat ?',
-                text: 'Clearing/Deleting chat will result in permenant loss of messages and media file. Would you like to continue? ',
-                showCloseButton: true,
-                showCancelButton: false,
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                showLoaderOnConfirm: true,
-                confirmButtonColor: '#d33',
-                customClass: 'sweetalert'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    setDoc(doc(fireabaseDatabase, 'chats', data.chatId), { messages: [] }).then(() => {
-                        showToast({
-                            title: 'Chat cleared succesfully',
-                            position: 'top-end',
-                            icon: 'success',
-                            timer: 2000,
-                            isShowTimeProgressBar: 'success',
-                            isShowConfirmButton: false,
-                            customClass: 'sweetalert sweetalertToast'
-                        });
-                    });
-                }
-            })
-
+            if (result.isConfirmed) {
+                await setDoc(doc(fireabaseDatabase, 'chats', data.chatId), { messages: [] });
+                showToast({
+                    title: 'Chat cleared succesfully',
+                    position: 'top-end',
+                    icon: 'success',
+                    timer: 2000,
+                    isShowTimeProgressBar: 'success',
+                    isShowConfirmButton: false,
+                    customClass: 'sweetalert sweetalertToast'
+                });
+            }
 
         } catch (e) {
-            console.log(e)
+            showToast({
+                title: 'Oops..Something went wrong',
+                position: 'top-end',
+                icon: 'error',
+                timer: 2000,
+                isShowTimeProgressBar: 'error',
+                isShowConfirmButton: false,
+                customClass: 'sweetalert sweetalertToast'
+            });
         }
+    }
+
+    const searchChat = async () => {
+        handleClose();
+        dispatch({ type: "LET_USER_SEARCH" });
     }
 
     const blockUser = () => {
         handleClose();
-
     }
 
     return (

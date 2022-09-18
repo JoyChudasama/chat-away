@@ -31,7 +31,7 @@ const showToast = (props) => {
         }
     });
 
-    Toast.fire()
+    Toast.fire();
 }
 
 
@@ -80,8 +80,53 @@ const showProfileModal = (props) => {
         hideClass: {
             popup: 'animate__animated animate__fadeOut animate__faster'
         }
-    })
+    });
 
 }
 
-export { showToast, showProfileModal };
+/**
+ * @namespace {Object} props
+ * @memberof props
+ * @title string
+ * @text string
+ * @returns SweetAlert {result}
+ */
+const showConfirmationModal = async (props) => {
+
+    const result = await Swal.fire({
+        title: props.title,
+        text: props.text,
+        showCloseButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        confirmButtonColor: '#d33',
+        customClass: 'sweetalert'
+    });
+
+    return result;
+}
+
+
+const showSearchChatModal = async () => {
+
+    const result = await Swal.fire({
+        title: 'Search...',
+        input: 'text',
+        inputLabel: 'Search in chat',
+        showCancelButton: false,
+        showConfirmButton: false,
+        showCloseButton: true,
+        customClass: 'sweetalert',
+        showClass: {
+            popup: 'animate__animated animate__fadeIn animate__faster'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut animate__faster'
+        }
+
+    });
+
+    return result;
+}
+export { showToast, showProfileModal, showConfirmationModal, showSearchChatModal };

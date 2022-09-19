@@ -1,13 +1,15 @@
-import { Timestamp } from 'firebase/firestore';
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
+import { SearchChat } from '../context/SearchChat';
 import { convertFirebaseTimestampToHoursAndMinuteForMessage } from '../utils/DateUtils';
 
 const Message = ({ message }) => {
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+  const { searchChatContext } = useContext(SearchChat);
+
   const messageTime = convertFirebaseTimestampToHoursAndMinuteForMessage(message.date)
 
   useEffect(() => {
@@ -23,9 +25,21 @@ const Message = ({ message }) => {
     <>
       <div className={`message ${message.senderId === currentUser.uid && 'owner'}`}>
         <div className="messageContent">
-          {message.text && <span className='messageText'>{message.text}</span>}
-          {message.img && <img src={message.img} alt="deleted image" />}
-          <span className="messageTime">{messageTime}</span>
+
+          {
+            message.text &&
+            <span className={`messageText ${searchChatContext.isRemoveHighlights ? '' :
+              searchChatContext.searchTerm !== '' ?
+                message.text.toLowerCase().includes(searchChatContext.searchTerm.toLowerCase()) ?
+                  'highlight' : '' : ''}`}
+            >
+              {message.text}
+            </span>
+          }
+
+          {message.img && <img src={message.img} alt="deleted" />}
+
+          <span className='messageTime' >{messageTime}</span>
         </div>
       </div>
     </>

@@ -160,21 +160,20 @@
                 }
             }
 
-            .searchChatContainer{
+            .searchChatContainer {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-around;
                 gap: 0.5rem;
-                padding-top: 0.5rem;
+                padding-top: 1rem;
 
-                > input{
-                    width: 85%;
-                    padding: 0.5rem;
+                >input {
+                    width: 75%;
+                    padding: 0.7rem;
                     background-color: white;
                     border: none;
                     outline: none;
                     border-radius: 2.5rem;
-
                 }
             }
 

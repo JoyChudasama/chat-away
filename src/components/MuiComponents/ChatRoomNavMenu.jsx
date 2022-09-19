@@ -9,7 +9,7 @@ import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import { ChatContext } from '../../context/ChatContext';
-import { showConfirmationModal, showProfileModal, showSearchChatModal, showToast } from '../../utils/SweetAlert';
+import { showConfirmationModal, showProfileModal, showToast } from '../../utils/SweetAlert';
 import { doc, setDoc } from 'firebase/firestore';
 import { fireabaseDatabase } from '../../firebase';
 import { SearchChat } from '../../context/SearchChat';

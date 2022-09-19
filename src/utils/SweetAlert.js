@@ -1,7 +1,5 @@
-import { TextField } from '@mui/material';
 import Swal from 'sweetalert2';
 import '../style/sweetalert.scss';
-import 'animate.css';
 
 /**
  * @namespace {Object} props
@@ -107,26 +105,4 @@ const showConfirmationModal = async (props) => {
     return result;
 }
 
-
-const showSearchChatModal = async () => {
-
-    const result = await Swal.fire({
-        title: 'Search...',
-        input: 'text',
-        inputLabel: 'Search in chat',
-        showCancelButton: false,
-        showConfirmButton: false,
-        showCloseButton: true,
-        customClass: 'sweetalert',
-        showClass: {
-            popup: 'animate__animated animate__fadeIn animate__faster'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOut animate__faster'
-        }
-
-    });
-
-    return result;
-}
-export { showToast, showProfileModal, showConfirmationModal, showSearchChatModal };
+export { showToast, showProfileModal, showConfirmationModal };

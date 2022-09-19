@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
 import { arrayUnion, doc, serverTimestamp, Timestamp, updateDoc } from 'firebase/firestore';
-import { fireabaseDatabase, firebaseStorage } from '../firebase';
+import { firebaseDatabase, firebaseStorage } from '../firebase';
 import { v4 as uuid } from 'uuid';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useRef } from 'react';
@@ -28,7 +28,7 @@ const UserChatInput = () => {
     try {
 
       if (!img) {
-        await updateDoc(doc(fireabaseDatabase, 'chats', data.chatId), {
+        await updateDoc(doc(firebaseDatabase, 'chats', data.chatId), {
           messages: arrayUnion({
             id: uuid(),
             text: text,
@@ -47,7 +47,7 @@ const UserChatInput = () => {
           },
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-              await updateDoc(doc(fireabaseDatabase, 'chats', data.chatId), {
+              await updateDoc(doc(firebaseDatabase, 'chats', data.chatId), {
                 messages: arrayUnion({
                   id: uuid(),
                   text: text,
@@ -61,14 +61,14 @@ const UserChatInput = () => {
         )
       }
 
-      await updateDoc(doc(fireabaseDatabase, 'userChats', currentUser.uid), {
+      await updateDoc(doc(firebaseDatabase, 'userChats', currentUser.uid), {
         [data.chatId + ".latestMessage"]: {
           text: text ? 'sent: ' + text : img ? 'sent: img' : ''
         },
         [data.chatId + '.date']: serverTimestamp()
       });
 
-      await updateDoc(doc(fireabaseDatabase, 'userChats', data.user.uid), {
+      await updateDoc(doc(firebaseDatabase, 'userChats', data.user.uid), {
         [data.chatId + ".latestMessage"]: {
           text: text ? 'recived: ' + text : img ? 'recived: img' : ''
         },

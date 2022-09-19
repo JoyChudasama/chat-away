@@ -23,6 +23,8 @@ export const ChatContextProvider = ({ children }) => {
                         currentUser.uid + action.payload.uid
                         : action.payload.uid + currentUser.uid
                 }
+            // case 'USER_BLOCKED':
+            //     return {INITIAL_STATE};
             case 'RESET':
                 return INITIAL_STATE;
             default:

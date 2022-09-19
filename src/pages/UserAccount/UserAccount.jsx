@@ -3,7 +3,7 @@ import './Account.scss';
 import TextField from '@mui/material/TextField';
 import Logo from '../../components/Logo/Logo';
 import { reauthenticateWithCredential, updateEmail, updateProfile } from 'firebase/auth';
-import { fireabaseDatabase, firebaseAuth, firebaseStorage } from '../../firebase';
+import { firebaseDatabase, firebaseAuth, firebaseStorage } from '../../firebase';
 import { showToast } from '../../utils/SweetAlert';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { AuthContext } from '../../context/AuthContext';

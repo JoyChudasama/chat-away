@@ -10,9 +10,10 @@ import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import { ChatContext } from '../../context/ChatContext';
 import { showConfirmationModal, showProfileModal, showToast } from '../../utils/SweetAlert';
-import { doc, setDoc } from 'firebase/firestore';
-import { fireabaseDatabase } from '../../firebase';
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { firebaseDatabase } from '../../firebase';
 import { SearchChat } from '../../context/SearchChat';
+import { AuthContext } from '../../context/AuthContext';
 
 
 export default function ChatRoomNavMenu(props) {
@@ -23,6 +24,7 @@ export default function ChatRoomNavMenu(props) {
 
     const { data } = useContext(ChatContext);
     const { dispatch } = useContext(SearchChat);
+    const { currentUser, user } = useContext(AuthContext);
 
     const handleClick = (event) => { setAnchorEl(event.currentTarget); };
     const handleClose = () => { setAnchorEl(null) };
@@ -40,7 +42,7 @@ export default function ChatRoomNavMenu(props) {
             const result = await showConfirmationModal({ title: 'Are you sure you want to clear chat?', text: 'Clearing/Deleting chat will result in permenant loss of messages and media file. Would you like to continue?' })
 
             if (result.isConfirmed) {
-                await setDoc(doc(fireabaseDatabase, 'chats', data.chatId), { messages: [] });
+                await setDoc(doc(firebaseDatabase, 'chats', data.chatId), { messages: [] });
                 showToast({
                     title: 'Chat cleared succesfully',
                     position: 'top-end',
@@ -70,9 +72,16 @@ export default function ChatRoomNavMenu(props) {
         dispatch({ type: "LET_USER_SEARCH" });
     }
 
-    const blockUser = () => {
+    const blockUser = async () => {
         handleClose();
+
+        const currentChatUserUid = data.user.uid;
+
+        await updateDoc(doc(firebaseDatabase, 'users', currentUser.uid), {
+            hasBlocked: arrayUnion(currentChatUserUid)
+        });
     }
+
 
     return (
         <div>

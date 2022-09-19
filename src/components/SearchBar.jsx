@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import { fireabaseDatabase } from '../firebase';
+import { firebaseDatabase } from '../firebase';
 import { collection, query, where, getDocs, setDoc, updateDoc, doc, serverTimestamp, getDoc } from "firebase/firestore";
 import { showToast } from '../utils/SweetAlert';
 import { useEffect } from 'react';
@@ -22,7 +22,7 @@ const SearchBar = () => {
 
   const handleUserSearch = async () => {
 
-    const searchQuery = query(collection(fireabaseDatabase, "users"), where("userName", "==", userName));
+    const searchQuery = query(collection(firebaseDatabase, "users"), where("userName", "==", userName));
 
     try {
       const querySnapshot = await getDocs(searchQuery);
@@ -50,27 +50,27 @@ const SearchBar = () => {
 
     try {
 
-      const res = await getDoc(doc(fireabaseDatabase, 'chats', combinedId));
+      const res = await getDoc(doc(firebaseDatabase, 'chats', combinedId));
 
       if (!res.exists()) {
-        await setDoc(doc(fireabaseDatabase, 'chats', combinedId), { messages: [] });
+        await setDoc(doc(firebaseDatabase, 'chats', combinedId), { messages: [] });
 
-        await updateDoc(doc(fireabaseDatabase, 'userChats', currentUser.uid), {
+        await updateDoc(doc(firebaseDatabase, 'userChats', currentUser.uid), {
           [combinedId + '.userInfo']: {
             uid: selectedUser.uid,
             userName: selectedUser.userName,
             photoURL: selectedUser.photoURL,
-            email: selectedUser.email
+            email: selectedUser.email,
           },
           [combinedId + '.date']: serverTimestamp()
         });
 
-        await updateDoc(doc(fireabaseDatabase, 'userChats', selectedUser.uid), {
+        await updateDoc(doc(firebaseDatabase, 'userChats', selectedUser.uid), {
           [combinedId + '.userInfo']: {
             uid: currentUser.uid,
             userName: currentUser.displayName,
             photoURL: currentUser.photoURL,
-            email: selectedUser.email
+            email: selectedUser.email,
           },
           [combinedId + '.date']: serverTimestamp()
         })

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import defaultAvatar from '../img/default/defaultAvatar2.png';
 import { doc, onSnapshot } from 'firebase/firestore';
-import { fireabaseDatabase } from '../firebase';
+import { firebaseDatabase } from '../firebase';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
@@ -18,7 +18,7 @@ const RecentChatList = () => {
   useEffect(() => {
 
     const getRecentChats = () => {
-      const unsub = onSnapshot(doc(fireabaseDatabase, 'userChats', currentUser.uid), (doc) => {
+      const unsub = onSnapshot(doc(firebaseDatabase, 'userChats', currentUser.uid), (doc) => {
         setRecentChats(doc.data());
       });
 

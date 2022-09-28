@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import defaultAvatar from '../img/default/defaultAvatar2.png';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { firebaseDatabase } from '../firebase';
 import { useContext } from 'react';

@@ -10,7 +10,7 @@ import BackspaceRoundedIcon from '@mui/icons-material/BackspaceRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import { ChatContext } from '../../context/ChatContext';
 import { showConfirmationModal, showProfileModal, showToast } from '../../utils/SweetAlert';
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { firebaseDatabase } from '../../firebase';
 import { SearchChat } from '../../context/SearchChat';
 import { AuthContext } from '../../context/AuthContext';
@@ -24,7 +24,7 @@ export default function ChatRoomNavMenu(props) {
 
     const { data } = useContext(ChatContext);
     const { dispatch } = useContext(SearchChat);
-    const { currentUser, user } = useContext(AuthContext);
+    const { currentUser} = useContext(AuthContext);
 
     const handleClick = (event) => { setAnchorEl(event.currentTarget); };
     const handleClose = () => { setAnchorEl(null) };

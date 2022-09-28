@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import UserNavMenu from './MuiComponents/UserNavMenu';
 import Avatar from '@mui/material/Avatar';
-import tempAvatar from '../img//default/defaultAvatar3.png';
 import { AuthContext } from '../context/AuthContext';
 
 const UserNavBar = () => {

@@ -1,7 +1,7 @@
 # chat-away
 App that let you chat with any user across the platform.
 
-In the project directory, you can run:Cancel changes
+In the project directory, you can run:
 
 ### `npm i`
 

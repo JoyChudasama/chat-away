@@ -17,7 +17,7 @@ You may store your secrets in .env and import it to config.js or modify firebase
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# `Screenshots of the app`
+# Screenshots of the app
 
 ### `Landing Page`
 

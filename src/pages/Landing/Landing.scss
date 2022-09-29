@@ -1,0 +1,103 @@
+.containerWrapper {
+    height: 100vh;
+    overflow: hidden;
+
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+
+        .left {
+            word-wrap: break-word;
+
+            .logo {
+                text-decoration: none;
+                font-weight: bolder;
+                font-size: 7rem;
+                font-family: 'Courgette', cursive;
+                background: linear-gradient(240deg, rgb(32, 201, 151) 0%, rgb(32, 201, 151) 48%, rgba(13, 110, 253, 1) 74%, rgba(13, 110, 253, 1) 79%, rgba(13, 110, 253, 1) 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+                &.away {
+                    padding-left: 0.7rem;
+                }
+            }
+
+            .description {
+                padding-top: 2rem
+            }
+
+            .navLinkContainer {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding-top: 4rem;
+
+                a {
+                    color: white;
+                    padding: 0.8rem;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    text-align: center;
+                    font-size: small;
+                }
+
+                .signUpLink {
+                    background-color: #20c997;
+                }
+
+                .loginLink {
+                    background-color: #0d6efd;
+                }
+            }
+        }
+
+        .right {
+            .imagesContainer {
+                display: flex;
+                gap: 1rem;
+
+                img {
+                    border-radius: 2rem;
+                    transition: all 0.5s;
+                    box-shadow: -2px 5px 20px #8d67ab;
+                    animation: shadowAnimation 10s infinite ease-in-out;
+                    -webkit-animation: shadowAnimation 10s infinite ease-in-out;
+
+                    &:hover {
+                        scale: 1.2;
+                        transition: all 0.3s;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: -2px 5px 20px #9ba0fc;
+    }
+
+    25% {
+        box-shadow: -2px 5px 20px #8fc7ff;
+    }
+
+    50% {
+        box-shadow: -2px 5px 20px #dcad72;
+    }
+
+    75% {
+        box-shadow: -2px 5px 20px #9ba0fc;
+    }
+
+    100% {
+        box-shadow: -2px 5px 20px #8fc7ff;
+    }
+}
